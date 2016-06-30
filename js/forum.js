@@ -11,39 +11,28 @@ function checkLS() {
 };
 // INPUT NAMES TO DROPDOWN
 function dropInput() {
-  // var $dropDown = $('#dropdown');
   tripsArray.forEach(function(trip) {
-    // var dropNames = '<option>' + trip.names + '</option>';
     $('#dropDown').append('<option>' + trip.names + '</option>');
   });
-  // for(var i = 0; i < tripsArray.length; i ++) { //forEach or map
-  //   var dropNames = 'document.createElement('option')';
-  //   dropNames.textContent = tripsArray[i].names;
-  //   dropNames.value = i;
-  //   $dropDown.appendChild(dropNames);
-  // }
 };
 // CREATE DROP LIST
 function createDropList() {
-  var $dropValue = $('#dropdown').value;
-  var $listArticle = $('#listArticle');
-  var $listContainer = $('#listContainer');
-  // $listArticle.removeChild(listContainer);
-  $listArticle.children().remove();
-  var listContainer = document.createElement('ul');
-  // $listContainer.setAttribute('id', 'listContainer');
-  $listContainer.attr('id', 'listContainer');
-  $listArticle.append($listContainer);
+  var $dropValue = $('#dropDown').val();
+  $('#listArticle').children().remove();
+  $('#listArticle').append('<ul id="listContainer"></ul>');
   if (!$dropValue) {
     alert('Head to the EQUIP tab to get a list started');
   } else {
-    var emptyList = [];
-    for (var i = 0; i < tripsArray[$dropValue].lists.length; i++) {
-      emptyList.push(tripsArray[$dropValue].lists[i]);
-      var equipEl = document.createElement('li');
-      equipEl.textContent = emptyList[i];
-      listContainer.appendChild(equipEl);
-    }
+    console.log($dropValue);
+    tripsArray.forEach(function(trips) {
+      if (trips.names === $dropValue) {
+        console.log(trips);
+        console.log(trips.lists);
+        trips.lists.forEach(function(item) {
+          $('#listContainer').append('<li>' + item + '</li>');
+        });
+      }
+    });
   }
 };
 // PUT VALUES INTO LOCAL STORAGE
