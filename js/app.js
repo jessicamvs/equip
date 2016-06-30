@@ -4,13 +4,10 @@ var listDisplay = {};
 // FINAL ARRAY
 var fullArray = [];
 // DECLARING VARIABLES
-// var $iconHike, $iconMount, $iconSnowboard, $iconSki, $iconCamp, $iconSunny, $iconRainy, $iconCloudy, $iconSnowy, $iconOne, $iconTwo, $iconThree, $essentials;
 var $active = $('#activities');
 var $weath = $('weather');
 var $dur = $('duration');
-// var active = document.getElementById('activities');
-// var weath = document.getElementById('weather');
-// var dur = document.getElementById('duration');
+
 // ITEMS ARRAY
 var activityItems = [
   ['Hiking Shoes/Boots', '1 Pair of Socks', '1 Pair of Underwear', '1 Shirt/Long­sleeve Shirt', '1 Pair of Shorts/Pants', '30-­40 Liter Backpack', 'Water Bottles', 'Swimsuit (if hiking to a lake)'],
@@ -21,105 +18,42 @@ var activityItems = [
   ['Extra Cool/Ventilating Layers', 'Electrolytes (tablets or liquid)'], ['Rain Jacket', 'Rain Pants', 'Wide-brimmed Hat', 'Dry Bags', 'Pack Cover'], ['Rain Jacket', 'Rain Pants', 'Waterproof Hat', 'Dry Bags', 'Pack Cover'], ['Snow Jacket', 'Snow Pants', 'Snow Gloves/Liners', 'Balaclava', 'Base Layers', 'Insulation Layer'], [],
   ['Sleeping Pad', 'Sleeping Bag', 'Pillow', 'Toiletries', 'Tent/Shelter', 'Stove/Pot', 'Fuel', 'Extra Batteries', 'Water Treatment (filter and/or chemical treatment)', 'Food Storage (bear canister or hanging system)', 'Camp Shoes']
 ];
-// var bwArray = [new Equip('Hiking', 'bwHiking.png'), new Equip('Mountaineering', 'bwMountaineering.png'), new Equip('Backcountry Snowboarding', 'bwSnowboard.png'), new Equip('Backcountry Skiing', 'bwSki.png'), new Equip('Car Camping', 'bwCarCamping.png'), new Equip('Sunny', 'bwSunny.png'),
-// new Equip('Rainy', 'bwRainy.png'), new Equip('Cloudy', 'bwCloudy.png'), new Equip('Snowy', 'bwSnow.png'), new Equip('1 Day', 'bwLessThan1.png'), new Equip('2-3 Days', 'bw2-3.png'), new Equip('3+ Days', 'bw3Plus.png')];
-// var colorArray = ['img/icons/hiking.png', 'img/icons/mountaineering.png', 'img/icons/snowboard.png', 'img/icons/ski.png', 'img/icons/carCamping.png', 'img/icons/sunny.png', 'img/icons/rainy.png', 'img/icons/cloudy.png', 'img/icons/snow.png', 'img/icons/lessThan1.png', 'img/icons/2-3.png', 'img/icons/3Plus.png']
+
 // ACTIVITY CONSTRUCTOR
-function Equip(names, src) {
-  this.names = names;
-  this.src = 'img/icons/' + src;
-  fullArray.push(this);
-};
-// CREATE ACTIVITY ICONS
-// function icons() {
-//   // HIKING
-//   $iconHike = $('#hiking');
-//   hiking.src = bwArray[0].src;
-//   // MOUNTAINEERING
-//   $iconMount = $('#mountaineering');
-//   mountaineering.src = bwArray[1].src;
-//   // SNOWBOARDING
-//   $iconSnowboard = $('#backcountrySnowboarding');
-//   backcountrySnowboarding.src = bwArray[2].src;
-//   // SKIING
-//   $iconSki = $('#backcountrySkiing');
-//   backcountrySkiing.src = bwArray[3].src;
-//   // CAMPING
-//   $iconCamp = $('#carCamping');
-//   carCamping.src = bwArray[4].src;
-//   // SUNNY
-//   $iconSunny = $('#sunny');
-//   sunny.src = bwArray[5].src;
-//   // RAINY
-//   $iconRainy = $('#rainy');
-//   rainy.src = bwArray[6].src;
-//   // CLOUDY
-//   $iconCloudy = $('#cloudy');
-//   cloudy.src = bwArray[7].src;
-//   // SNOWY
-//   $iconSnowy = $('#snowy');
-//   snowy.src = bwArray[8].src;
-//   // ONE DAY
-//   $iconOne = $('#lessThanOne');
-//   lessThanOne.src = bwArray[9].src;
-//   // TWO - THREE DAYS
-//   $iconTwo = $('#twoThree');
-//   twoThree.src = bwArray[10].src;
-//   // THREE PLUS DAYS
-//   $iconThree = $('#threePlus');
-//   threePlus.src = bwArray[11].src;
+// function Equip(names, src) {
+//   this.names = names;
+//   this.src = 'img/icons/' + src;
+//   fullArray.push(this);
 // };
-// icons();
+
 // ACTIVITY EVENT LISTENERS
 $('#activities').on('click', 'img', function() {
+  if (!$(this).is('.clickedOn')) {
+    $(this).addClass('clickedOn');
+    this.src = 'img/icons/' + this.src.split('/bw')[1];
+  }
   $(this).siblings().each(function(ele) {
     if (this.src.split('/bw').length === 1) {
+      $(this).removeClass('clickedOn');
       this.src = this.src.split('icons/')[0] + 'icons/bw' + this.src.split('icons/')[1];
     }
   });
-   this.src = 'img/icons/' + this.src.split('/bw')[1];
 });
-
 
 $($iconHike).on('click', function() {
   handleIcon(activityItems[0]);
-  hiking.src = colorArray[0].src;
-  mountaineering.src = bwArray[1].src;
-  backcountrySnowboarding.src = bwArray[2].src;
-  backcountrySkiing.src = bwArray[3].src;
-  carCamping.src = bwArray[4].src;
 });
 $($iconMount).on('click', function() {
   handleIcon(activityItems[1]);
-  hiking.src = bwArray[0].src;
-  mountaineering.src = colorArray[1].src;
-  backcountrySnowboarding.src = bwArray[2].src;
-  backcountrySkiing.src = bwArray[3].src;
-  carCamping.src = bwArray[4].src;
 });
 $($iconSnowboard).on('click', function() {
   handleIcon(activityItems[2]);
-  hiking.src = bwArray[0].src;
-  mountaineering.src = bwArray[1].src;
-  backcountrySnowboarding.src = colorArray[2].src;
-  backcountrySkiing.src = bwArray[3].src;
-  carCamping.src = bwArray[4].src;
 });
 $($iconSki).on('click', function() {
   handleIcon(activityItems[3]);
-  hiking.src = bwArray[0].src;
-  mountaineering.src = bwArray[1].src;
-  backcountrySnowboarding.src = bwArray[2].src;
-  backcountrySkiing.src = colorArray[3].src;
-  carCamping.src = bwArray[4].src;
 });
 $($iconCamp).on('click', function() {
   handleIcon(activityItems[4]);
-  hiking.src = bwArray[0].src;
-  mountaineering.src = bwArray[1].src;
-  backcountrySnowboarding.src = bwArray[2].src;
-  backcountrySkiing.src = bwArray[3].src;
-  carCamping.src = colorArray[4].src;
 });
 // ACTIVITY EVENT HANDLER
 // function handleIcon(icon) {
@@ -134,31 +68,15 @@ $($iconCamp).on('click', function() {
 // WEATHER EVENT LISTENERS
 $iconSunny.addEventListener('click', function() {
   handleIcon2(activityItems[5]);
-  sunny.src = colorArray[5].src;
-  rainy.src = bwArray[6].src;
-  cloudy.src = bwArray[7].src;
-  snowy.src = bwArray[8].src;
 });
 iconRainy.addEventListener('click', function() {
   handleIcon2(activityItems[6]);
-  sunny.src = bwArray[5].src;
-  rainy.src = colorArray[6].src;
-  cloudy.src = bwArray[7].src;
-  snowy.src = bwArray[8].src;
 });
 iconCloudy.addEventListener('click', function() {
   handleIcon2(activityItems[7]);
-  sunny.src = bwArray[5].src;
-  rainy.src = bwArray[6].src;
-  cloudy.src = colorArray[7].src;
-  snowy.src = bwArray[8].src;
 });
 iconSnowy.addEventListener('click', function() {
   handleIcon2(activityItems[8]);
-  sunny.src = bwArray[5].src;
-  rainy.src = bwArray[6].src;
-  cloudy.src = bwArray[7].src;
-  snowy.src = colorArray[8].src;
 });
 // WEATHER EVENT HANDLER
 // function handleIcon2(icon) {
@@ -171,21 +89,12 @@ iconSnowy.addEventListener('click', function() {
 // DURATION EVENT LISTENERS
 iconOne.addEventListener('click', function() {
   handleIcon3(activityItems[9]);
-  lessThanOne.src = colorArray[9].src;
-  twoThree.src = bwArray[10].src;
-  threePlus.src = bwArray[11].src;
 });
 iconTwo.addEventListener('click', function() {
   handleIcon3(activityItems[10]);
-  lessThanOne.src = bwArray[9].src;
-  twoThree.src = colorArray[10].src;
-  threePlus.src = bwArray[11].src;
 });
 iconThree.addEventListener('click', function() {
   handleIcon3(activityItems[10]);
-  lessThanOne.src = bwArray[9].src;
-  twoThree.src = bwArray[10].src;
-  threePlus.src = colorArray[11].src;
 });
 // DURATION EVENT HANDLER
 // var finalArray;
@@ -250,9 +159,9 @@ function handleButton(e) {
     finalList.appendChild(loadList);
   }
   tripName.style.display = 'none';
-  active.style.display = 'none';
-  weath.style.display = 'none';
-  dur.style.display = 'none';
+  $active.style.display = 'none';
+  $weath.style.display = 'none';
+  $dur.style.display = 'none';
   results.style.display = 'none';
   saveButton.style.display = 'block';
   clearList.style.display = 'block';
