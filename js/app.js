@@ -27,7 +27,7 @@ var activityItems = [
 // };
 
 // ACTIVITY EVENT LISTENERS
-$('#activities').on('click', 'img', function() {
+$('#iconSection').on('click', 'img', function() {
   if (!$(this).is('.clickedOn')) {
     $(this).addClass('clickedOn');
     this.src = 'img/icons/' + this.src.split('/bw')[1];
