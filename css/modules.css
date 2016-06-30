@@ -87,3 +87,59 @@ div#slider figure {
   margin-right: auto;
   padding: 20px 20px 20px 20px;
 }
+
+#dropdown {
+  width: 150px;
+}
+
+#formContainer {
+  background-color: none;
+  margin-bottom: 12px;
+  max-height: 500px;
+}
+
+#inputSection {
+  max-height: 500px;
+}
+
+#listArticle {
+  max-height: 500px;
+}
+
+#legend {
+  text-align: center;
+}
+
+#past-lists {
+  font-family: 'Montserrat', sans-serif;
+}
+
+legend {
+  font-size: 18px;
+  margin-bottom: 7px;
+  background-color: none;
+}
+
+.formLabel {
+  width: 300px;
+  margin-top: 8px;
+  margin-bottom: 5px;
+  background-color: none;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.formField {
+  width: 460px;
+  background-color: none;
+  margin-bottom: 18px;
+}
+
+label {
+  font-family: 'Montserrat', sans-serif;
+}
+
+#journalEntries {
+  list-style: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+}
