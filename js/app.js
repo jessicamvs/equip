@@ -25,23 +25,24 @@ var activityItems = [
 ];
 
 // ACTIVITY EVENT LISTENERS
-var yeah;
-var yeah2;
+var arr;
+var yes;
 $('#iconSection').on('click', 'img', function() {
   if (!$(this).is('.clickedOn')) {
-    $(this).addClass('clickedOn');
-    this.src = 'img/icons/' + this.src.split('/bw')[1];
-    activityItems[parseInt($(this).attr('data-activityItems'))].forEach(function(ele) {
-      essentials.push(ele);
-    })
-  }
-
-  $(this).siblings().each(function(ele) {
-    if (this.src.split('/bw').length === 1) {
+    $(this).siblings().filter('.clickedOn').each(function(ele) {
       $(this).removeClass('clickedOn');
       this.src = this.src.split('icons/')[0] + 'icons/bw' + this.src.split('icons/')[1];
-    }
-  });
+      arr = essentials.indexOf(activityItems[parseInt($(this).attr('data-activityItems'))]);
+      console.log(essentials);
+      essentials.splice(arr, arr);
+      console.log(essentials);
+    });
+
+    $(this).addClass('clickedOn');
+    this.src = 'img/icons/' + this.src.split('/bw')[1];
+    essentials.push(activityItems[parseInt($(this).attr('data-activityItems'))]);
+    console.log(essentials);
+  }
 });
 
 listDisplay.handleMainDisplay = function() {
