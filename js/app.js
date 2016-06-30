@@ -4,6 +4,7 @@ var listDisplay = {};
 // FINAL ARRAY
 var fullArray = [];
 // DECLARING VARIABLES
+var essentials = [];
 var $active = $('#activities');
 var $weath = $('weather');
 var $dur = $('duration');
@@ -15,7 +16,11 @@ var activityItems = [
   ['Snowboard/Splitboard', 'Snowboard Boots', 'Helmet', 'Trekking Poles', 'Avalanche Beacon', 'Snow Shovel', 'Avalanche Probe', 'Snow Study Kit', 'Snow Saw', 'Rutschblock Cord', 'Snowshoes/Skins', 'Snow Jacket', 'Snow Pants', 'Snow Gloves/Liners', 'Balaclava', 'Base Layers', 'Insulation Layer'],
   ['Skis (Touring Setup)', 'Ski Boots', 'Helmet', 'Poles', 'Avalanche Beacon', 'Snow Shovel', 'Avalanche Probe', 'Snow Study Kit', 'Snow Saw', 'Rutschblock Cord', 'Skins', 'Snow Jacket', 'Snow Pants', 'Snow Gloves/Liners', 'Balaclava', 'Base Layers', 'Insulation Layer'],
   ['Tent', 'Sleeping Pad', 'Sleeping Bag', 'Tarp', 'Portable Camping Stove', 'Cookware', 'Utensils for Cooking and Eating', 'Paper Plates', 'Paper Towels', 'Garbage Bags', 'Cooler and Ice', 'Water', 'Firewood (if fires allowed)', 'Fire Starter (matches, newspaper)', 'Bug repellent', 'Warm clothing (sleep clothes)', 'Swimwear and Towel (if camping near water/beach)'],
-  ['Extra Cool/Ventilating Layers', 'Electrolytes (tablets or liquid)'], ['Rain Jacket', 'Rain Pants', 'Wide-brimmed Hat', 'Dry Bags', 'Pack Cover'], ['Rain Jacket', 'Rain Pants', 'Waterproof Hat', 'Dry Bags', 'Pack Cover'], ['Snow Jacket', 'Snow Pants', 'Snow Gloves/Liners', 'Balaclava', 'Base Layers', 'Insulation Layer'], [],
+  ['Extra Cool/Ventilating Layers', 'Electrolytes (tablets or liquid)'],
+  ['Rain Jacket', 'Rain Pants', 'Wide-brimmed Hat', 'Dry Bags', 'Pack Cover'],
+  ['Rain Jacket', 'Rain Pants', 'Waterproof Hat', 'Dry Bags', 'Pack Cover'],
+  ['Snow Jacket', 'Snow Pants', 'Snow Gloves/Liners', 'Balaclava', 'Base Layers', 'Insulation Layer'],
+  [],
   ['Sleeping Pad', 'Sleeping Bag', 'Pillow', 'Toiletries', 'Tent/Shelter', 'Stove/Pot', 'Fuel', 'Extra Batteries', 'Water Treatment (filter and/or chemical treatment)', 'Food Storage (bear canister or hanging system)', 'Camp Shoes']
 ];
 
@@ -27,17 +32,26 @@ var activityItems = [
 // };
 
 // ACTIVITY EVENT LISTENERS
+var yeah;
+var yeah2;
 $('#iconSection').on('click', 'img', function() {
   if (!$(this).is('.clickedOn')) {
     $(this).addClass('clickedOn');
     this.src = 'img/icons/' + this.src.split('/bw')[1];
+    yeah = $(this).attr('data-essentials');
+    console.log(yeah);
+    console.log(typeof activityItems[0]);
   }
+
   $(this).siblings().each(function(ele) {
     if (this.src.split('/bw').length === 1) {
       $(this).removeClass('clickedOn');
       this.src = this.src.split('icons/')[0] + 'icons/bw' + this.src.split('icons/')[1];
     }
   });
+
+
+
 });
 
 $($iconHike).on('click', function() {
@@ -56,15 +70,15 @@ $($iconCamp).on('click', function() {
   handleIcon(activityItems[4]);
 });
 // ACTIVITY EVENT HANDLER
+
 // function handleIcon(icon) {
 //   var $finalList = $('#finalList');
 //   // finalList.style.display = 'none';
-//   essentials = ['Knife or Multitool', 'Firestarter and Matches', 'Map', 'Compass', 'First Aid Kit', 'Flashlight', 'Sun Protection (hat, sunglasses, sunscreen)', 'Whistle', 'Extra Clothing (hat, gloves, socks, underwear)', 'Extra Food (Energy Bar or Gel)'];
 //   for (var i = 0; i < icon.length; i++) {
 //     essentials.push(icon[i]);
 //   }
-  // console.log(essentials);
 // };
+
 // WEATHER EVENT LISTENERS
 $iconSunny.addEventListener('click', function() {
   handleIcon2(activityItems[5]);
