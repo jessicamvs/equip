@@ -5,38 +5,43 @@ var where, details, wish;
 // TAKES INFO FROM LOCAL STORAGE
 function checkLS() {
   if (localStorage.totalTrips) {
-    var z = localStorage.getItem('totalTrips');
-    var a = JSON.parse(z);
-    tripsArray = a;
+    // var z = localStorage.getItem('totalTrips');
+    // var a = JSON.parse(z);
+    // tripsArray = a;
+    tripsArray = JSON.parse(localStorage.getItem('totalTrips'));
   }
 };
 checkLS();
 // INPUT NAMES TO DROPDOWN
 function dropInput() {
-  var dropDown = document.getElementById('dropdown');
-  for(var i = 0; i < tripsArray.length; i ++) {
-    var dropNames = document.createElement("option");
-    dropNames.textContent = tripsArray[i].names;
-    dropNames.value = i;
-    dropDown.appendChild(dropNames);
-  }
+  // var $dropDown = $('#dropdown');
+  tripsArray.forEach(function(trip) {
+    var dropNames = '<option>' + trip + '</option>';
+    $('#dropDown').append(dropNames);
+  });
+  // for(var i = 0; i < tripsArray.length; i ++) { //forEach or map
+  //   var dropNames = 'document.createElement('option')';
+  //   dropNames.textContent = tripsArray[i].names;
+  //   dropNames.value = i;
+  //   $dropDown.appendChild(dropNames);
+  // }
 };
 dropInput();
 // CREATE DROP LIST
 function createDropList() {
-  var dropValue = document.getElementById('dropdown').value;
-  var listArticle = document.getElementById('listArticle');
-  var listContainer = document.getElementById('listContainer');
-  listArticle.removeChild(listContainer);
+  var $dropValue = $('#dropdown').value;
+  var $listArticle = $('#listArticle');
+  var $listContainer = $('#listContainer');
+  $listArticle.removeChild(listContainer);
   var listContainer = document.createElement('ul');
-  listContainer.setAttribute('id', 'listContainer');
-  listArticle.appendChild(listContainer);
-  if (!dropValue) {
+  $listContainer.setAttribute('id', 'listContainer');
+  $listArticle.appendChild(listContainer);
+  if (!$dropValue) {
     alert('Head to the EQUIP tab to get a list started');
   } else {
     var emptyList = [];
-    for (var i = 0; i < tripsArray[dropValue].lists.length; i++) {
-      emptyList.push(tripsArray[dropValue].lists[i]);
+    for (var i = 0; i < tripsArray[$dropValue].lists.length; i++) {
+      emptyList.push(tripsArray[$dropValue].lists[i]);
       var equipEl = document.createElement('li');
       equipEl.textContent = emptyList[i];
       listContainer.appendChild(equipEl);
@@ -45,12 +50,12 @@ function createDropList() {
 };
 // PUT VALUES INTO LOCAL STORAGE
 function newLS() {
-  var dropValue = document.getElementById('dropdown').value;
-  where = document.getElementById('where').value;
+  var $dropValue = $('#dropdown').val();
+  $where = $('#where').val();
   tripsArray[dropValue].destination = where;
-  details = document.getElementById('details').value;
+  $details = $('#details').val();
   tripsArray[dropValue].details = details;
-  wish = document.getElementById('wish').value;
+  $wish = $('#wish').value;
   tripsArray[dropValue].wish = wish;
   // LS ARRAY
   var storeArray = JSON.stringify(tripsArray);
@@ -59,31 +64,31 @@ function newLS() {
 // PRINT FORM CONTENT
 function makePastLists() {
   // event.preventDefault();
-  var dropValue = document.getElementById('dropdown').value;
-  var inputSection = document.getElementById('inputSection');
-  var journalEntries = document.getElementById('journalEntries');
-  inputSection.removeChild(journalEntries);
+  var $dropValue = $('#dropdown').val();
+  var $inputSection = $('#inputSection');
+  var $journalEntries = $('#journalEntries');
+  $inputSection.children().remove();(journalEntries);
   var journalEntries = document.createElement('div');
-  journalEntries.setAttribute('id', 'journalEntries');
+  $journalEntries.attr('id', 'journalEntries');
   var destination = document.createElement('h5');
   destination.textContent = 'Destination:';
-  journalEntries.appendChild(destination);
+  $journalEntries.append(destination);
   var inputDestination = document.createElement('p');
-  inputDestination.textContent = tripsArray[dropValue].destination;
-  journalEntries.appendChild(inputDestination);
+  inputDestination.textContent = tripsArray[$dropValue].destination;
+  $journalEntries.append(inputDestination);
   var tripDetails = document.createElement('h5');
   tripDetails.textContent = 'Trip Details:';
-  journalEntries.appendChild(tripDetails);
+  $journalEntries.append(tripDetails);
   var inputTripDetails = document.createElement('p');
-  inputTripDetails.textContent = tripsArray[dropValue].details;
-  journalEntries.appendChild(inputTripDetails);
+  inputTripDetails.textContent = tripsArray[$dropValue].details;
+  $journalEntries.append(inputTripDetails);
   var wishIdBrought = document.createElement('h5');
   wishIdBrought.textContent = 'Wish I\'d Brought:'
-  journalEntries.appendChild(wishIdBrought);
+  $journalEntries.append(wishIdBrought);
   var inputWish = document.createElement('p');
-  inputWish.textContent = tripsArray[dropValue].wish;
-  journalEntries.appendChild(inputWish);
-  inputSection.appendChild(journalEntries);
+  inputWish.textContent = tripsArray[$dropValue].wish;
+  $journalEntries.append(inputWish);
+  $inputSection.append($journalEntries);
 };
 // CHECK IF DROPDOWN HAS INFOMATION
 var inputForm = document.getElementById('inputForm');
