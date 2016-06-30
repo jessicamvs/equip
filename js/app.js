@@ -4,7 +4,7 @@ var listDisplay = {};
 // FINAL ARRAY
 var fullArray = [];
 // DECLARING VARIABLES
-var $iconHike, $iconMount, $iconSnowboard, $iconSki, $iconCamp, $iconSunny, $iconRainy, $iconCloudy, $iconSnowy, $iconOne, $iconTwo, $iconThree, $essentials;
+// var $iconHike, $iconMount, $iconSnowboard, $iconSki, $iconCamp, $iconSunny, $iconRainy, $iconCloudy, $iconSnowy, $iconOne, $iconTwo, $iconThree, $essentials;
 var $active = $('#activities');
 var $weath = $('weather');
 var $dur = $('duration');
@@ -23,8 +23,7 @@ var activityItems = [
 ];
 // var bwArray = [new Equip('Hiking', 'bwHiking.png'), new Equip('Mountaineering', 'bwMountaineering.png'), new Equip('Backcountry Snowboarding', 'bwSnowboard.png'), new Equip('Backcountry Skiing', 'bwSki.png'), new Equip('Car Camping', 'bwCarCamping.png'), new Equip('Sunny', 'bwSunny.png'),
 // new Equip('Rainy', 'bwRainy.png'), new Equip('Cloudy', 'bwCloudy.png'), new Equip('Snowy', 'bwSnow.png'), new Equip('1 Day', 'bwLessThan1.png'), new Equip('2-3 Days', 'bw2-3.png'), new Equip('3+ Days', 'bw3Plus.png')];
-// var colorArray = [new Equip('Hiking', 'hiking.png'), new Equip('Mountaineering', 'mountaineering.png'), new Equip('Backcountry Snowboarding', 'snowboard.png'), new Equip('Backcountry Skiing', 'ski.png'), new Equip('Car Camping', 'carCamping.png'), new Equip('Sunny', 'sunny.png'),
-// new Equip('Rainy', 'rainy.png'), new Equip('Cloudy', 'cloudy.png'), new Equip('Snowy', 'snow.png'), new Equip('1 Day', 'lessThan1.png'), new Equip('2-3 Days', '2-3.png'), new Equip('3+ Days', '3Plus.png')]
+// var colorArray = ['img/icons/hiking.png', 'img/icons/mountaineering.png', 'img/icons/snowboard.png', 'img/icons/ski.png', 'img/icons/carCamping.png', 'img/icons/sunny.png', 'img/icons/rainy.png', 'img/icons/cloudy.png', 'img/icons/snow.png', 'img/icons/lessThan1.png', 'img/icons/2-3.png', 'img/icons/3Plus.png']
 // ACTIVITY CONSTRUCTOR
 function Equip(names, src) {
   this.names = names;
@@ -72,6 +71,16 @@ function Equip(names, src) {
 // };
 // icons();
 // ACTIVITY EVENT LISTENERS
+$('#activities').on('click', 'img', function() {
+  $(this).siblings().each(function(ele) {
+    if (this.src.split('/bw').length === 1) {
+      this.src = this.src.split('icons/')[0] + 'icons/bw' + this.src.split('icons/')[1];
+    }
+  });
+   this.src = 'img/icons/' + this.src.split('/bw')[1];
+});
+
+
 $($iconHike).on('click', function() {
   handleIcon(activityItems[0]);
   hiking.src = colorArray[0].src;
@@ -123,7 +132,7 @@ $($iconCamp).on('click', function() {
   // console.log(essentials);
 // };
 // WEATHER EVENT LISTENERS
-iconSunny.addEventListener('click', function() {
+$iconSunny.addEventListener('click', function() {
   handleIcon2(activityItems[5]);
   sunny.src = colorArray[5].src;
   rainy.src = bwArray[6].src;

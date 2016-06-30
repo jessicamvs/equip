@@ -10,6 +10,10 @@ div#slider figure {
 }
 
 /*EQUIP PAGE*/
+.clickedOn {
+   box-shadow:0px 12px 22px 1px #333;
+}
+
 .icons {
   cursor: pointer;
 }
