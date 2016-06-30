@@ -2,16 +2,13 @@
 
 var tripsArray = [];
 var where, details, wish;
+
 // TAKES INFO FROM LOCAL STORAGE
 function checkLS() {
   if (localStorage.totalTrips) {
-    // var z = localStorage.getItem('totalTrips');
-    // var a = JSON.parse(z);
-    // tripsArray = a;
     tripsArray = JSON.parse(localStorage.getItem('totalTrips'));
   }
 };
-checkLS();
 // INPUT NAMES TO DROPDOWN
 function dropInput() {
   // var $dropDown = $('#dropdown');
@@ -26,7 +23,6 @@ function dropInput() {
   //   $dropDown.appendChild(dropNames);
   // }
 };
-dropInput();
 // CREATE DROP LIST
 function createDropList() {
   var $dropValue = $('#dropdown').value;
@@ -52,11 +48,11 @@ function createDropList() {
 function newLS() {
   var $dropValue = $('#dropdown').val();
   $where = $('#where').val();
-  tripsArray[dropValue].destination = where;
+  tripsArray[$dropValue].destination = where;
   $details = $('#details').val();
-  tripsArray[dropValue].details = details;
+  tripsArray[$dropValue].details = details;
   $wish = $('#wish').value;
-  tripsArray[dropValue].wish = wish;
+  tripsArray[$dropValue].wish = wish;
   // LS ARRAY
   var storeArray = JSON.stringify(tripsArray);
   localStorage.setItem('totalTrips', storeArray);
@@ -83,7 +79,7 @@ function makePastLists() {
   inputTripDetails.textContent = tripsArray[$dropValue].details;
   $journalEntries.append(inputTripDetails);
   var wishIdBrought = document.createElement('h5');
-  wishIdBrought.textContent = 'Wish I\'d Brought:'
+  wishIdBrought.textContent = 'Wish I\'d Brought:';
   $journalEntries.append(wishIdBrought);
   var inputWish = document.createElement('p');
   inputWish.textContent = tripsArray[$dropValue].wish;
@@ -99,14 +95,14 @@ function clearForm() {
 };
 function dropDownInfo() {
   var dropValue = document.getElementById('dropdown').value;
-  var journalEntries = document.getElementById('journalEntries')
+  var journalEntries = document.getElementById('journalEntries');
   if (tripsArray[dropValue].destination.length === 0 && tripsArray[dropValue].details.length === 0 && tripsArray[dropValue].wish.length === 0) {
     inputForm.removeAttribute('hidden');
     journalEntries.style.display = 'none';
     clearForm();
   } else {
     makePastLists();
-    inputForm.setAttribute("hidden", true);
+    inputForm.setAttribute('hidden', true);
   }
 };
 // DROPDOWN SUBMIT BUTTON
@@ -118,7 +114,7 @@ function handleSubmitClick(e) {
 };
 // SAVE LISTS BUTTON
 var pastListButton = document.getElementById('pastListButton');
-var formArticle = document.getElementById('formArticle');
+// var formArticle = document.getElementById('formArticle');
 pastListButton.addEventListener('click', handleSaveClick);
 function handleSaveClick(e) {
   e.preventDefault();
@@ -131,7 +127,11 @@ function handleSaveClick(e) {
 deleted.addEventListener('click', handleDeleteClick);
 function handleDeleteClick() {
   console.log('deleting local storage!');
-  alert("Press 'OK' to delete ALL you past list entries.");
+  alert('Press "OK" to delete ALL you past list entries.');
   location.reload(false);
   localStorage.clear();
 };
+$(document).ready(function() {
+  checkLS();
+  dropInput();
+});
