@@ -2,7 +2,7 @@
 
 var tripsArray = [];
 var trip = null;
-// var where, details, wish;
+var where, details, wish;
 
 function selectionValue() {             // Placeholder function to get the selected object
   tripsArray.forEach(function(trips) {
@@ -23,7 +23,8 @@ function dropInput() {
   tripsArray.forEach(function(trip) {
     $('#dropDown').append('<option>' + trip.names + '</option>');
   });
-};
+}
+
 // CREATE DROP LIST
 function createDropList() {
   var $dropValue = $('#dropDown').val();
@@ -40,7 +41,7 @@ function createDropList() {
       }
     });
   }
-};
+}
 
 // PUT VALUES INTO LOCAL STORAGE
 function newLS() {
@@ -98,22 +99,22 @@ function makePastLists() {
 
 };
 // CHECK IF DROPDOWN HAS INFOMATION
-var inputForm = document.getElementById('inputForm');
+var $inputForm = $('#inputForm');
 function clearForm() {
   where = null;
   details = null;
   wish = null;
 };
 function dropDownInfo() {
-  var $dropValue = $('#dropdown').val();
+  // var $dropValue = $('#dropdown').val();
   var journalEntries = document.getElementById('journalEntries');
-  if (tripsArray[$dropValue].destination.length === 0 && tripsArray[$dropValue].details.length === 0 && tripsArray[$dropValue].wish.length === 0) {
-    inputForm.removeAttribute('hidden');
+  if (trip.destination.length === 0 && trip.details.length === 0 && trip.wish.length === 0) {
+    $inputForm.attr('hidden', false);
     journalEntries.style.display = 'none';
     clearForm();
   } else {
     makePastLists();
-    inputForm.setAttribute('hidden', true);
+    $inputForm.attr('hidden', true);
   }
 };
 
