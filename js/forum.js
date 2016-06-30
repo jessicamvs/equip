@@ -1,7 +1,7 @@
 'use strict';
 
 var tripsArray = [];
-var where, details, wish;
+// var where, details, wish;
 
 // TAKES INFO FROM LOCAL STORAGE
 function checkLS() {
@@ -13,8 +13,8 @@ function checkLS() {
 function dropInput() {
   // var $dropDown = $('#dropdown');
   tripsArray.forEach(function(trip) {
-    var dropNames = '<option>' + trip + '</option>';
-    $('#dropDown').append(dropNames);
+    // var dropNames = '<option>' + trip.names + '</option>';
+    $('#dropDown').append('<option>' + trip.names + '</option>');
   });
   // for(var i = 0; i < tripsArray.length; i ++) { //forEach or map
   //   var dropNames = 'document.createElement('option')';
@@ -28,10 +28,12 @@ function createDropList() {
   var $dropValue = $('#dropdown').value;
   var $listArticle = $('#listArticle');
   var $listContainer = $('#listContainer');
-  $listArticle.removeChild(listContainer);
+  // $listArticle.removeChild(listContainer);
+  $listArticle.children().remove();
   var listContainer = document.createElement('ul');
-  $listContainer.setAttribute('id', 'listContainer');
-  $listArticle.appendChild(listContainer);
+  // $listContainer.setAttribute('id', 'listContainer');
+  $listContainer.attr('id', 'listContainer');
+  $listArticle.append($listContainer);
   if (!$dropValue) {
     alert('Head to the EQUIP tab to get a list started');
   } else {
@@ -47,12 +49,12 @@ function createDropList() {
 // PUT VALUES INTO LOCAL STORAGE
 function newLS() {
   var $dropValue = $('#dropdown').val();
-  $where = $('#where').val();
-  tripsArray[$dropValue].destination = where;
-  $details = $('#details').val();
-  tripsArray[$dropValue].details = details;
-  $wish = $('#wish').value;
-  tripsArray[$dropValue].wish = wish;
+  var $where = $('#where').val();
+  tripsArray[$dropValue].destination = $where;
+  var $details = $('#details').val();
+  tripsArray[$dropValue].details = $details;
+  var $wish = $('#wish').val();
+  tripsArray[$dropValue].wish = $wish;
   // LS ARRAY
   var storeArray = JSON.stringify(tripsArray);
   localStorage.setItem('totalTrips', storeArray);
@@ -94,9 +96,9 @@ function clearForm() {
   wish = null;
 };
 function dropDownInfo() {
-  var dropValue = document.getElementById('dropdown').value;
+  var $dropValue = $('#dropdown').val();
   var journalEntries = document.getElementById('journalEntries');
-  if (tripsArray[dropValue].destination.length === 0 && tripsArray[dropValue].details.length === 0 && tripsArray[dropValue].wish.length === 0) {
+  if (tripsArray[$dropValue].destination.length === 0 && tripsArray[$dropValue].details.length === 0 && tripsArray[$dropValue].wish.length === 0) {
     inputForm.removeAttribute('hidden');
     journalEntries.style.display = 'none';
     clearForm();
@@ -113,9 +115,9 @@ function handleSubmitClick(e) {
   dropDownInfo();
 };
 // SAVE LISTS BUTTON
-var pastListButton = document.getElementById('pastListButton');
+var $pastListButton = document.getElementById('pastListButton');
 // var formArticle = document.getElementById('formArticle');
-pastListButton.addEventListener('click', handleSaveClick);
+$pastListButton.addEventListener('click', handleSaveClick);
 function handleSaveClick(e) {
   e.preventDefault();
   console.log('THIS IS SAVED TO LOCAL STORAGE');
