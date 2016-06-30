@@ -31,9 +31,9 @@ $('#iconSection').on('click', 'img', function() {
   if (!$(this).is('.clickedOn')) {
     $(this).addClass('clickedOn');
     this.src = 'img/icons/' + this.src.split('/bw')[1];
-    yeah = $(this).attr('data-essentials');
-    console.log(yeah);
-    console.log(typeof activityItems[0]);
+    activityItems[parseInt($(this).attr('data-activityItems'))].forEach(function(ele) {
+      essentials.push(ele);
+    })
   }
 
   $(this).siblings().each(function(ele) {
