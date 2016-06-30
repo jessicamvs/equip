@@ -1,57 +1,3 @@
-body {
-  margin: 0;
-}
-
-/*HEADER*/
-
-header {
-  display: flex;
-  justify-content: center;
-  padding: 20px 0px 0px 0px;
-  margin: -15px;
-}
-
-#headerLogo {
-  display: flex;
-  align-self: center;
-}
-
-/*NAV BAR*/
-
-nav {
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  background-color: none;
-  padding: 0px 10px 20px 10px;
-  margin: 10px 10px -35px 10px;
-}
-
-nav ul {
-  display: flex;
-  align-self: center;
-  font-family: 'Montserrat', sans-serif;
-  background-color: none;
-}
-
-nav ul li {
-  display: flex;
-  list-style: none;
-  background-color: none;
-  margin: 10px 0px 10px 0px;
-  padding: 0px 10px 0px 10px;
-}
-
-nav ul li a {
-  display: flex;
-  flex-direction: row;
-  text-decoration: none;
-  color: black;
-  background-color: none;
-}
-
-/* HOMEPAGE IMAGE SLIDER*/
-
 @keyframes slidy {
 0%  { left: 0%; }
 5%  { left: 0%; }
@@ -90,12 +36,7 @@ div#slider figure {
   width: 500%;
   margin: -150px 0px 0px 0px;
   left: 0;
-  text-align: left;
-  font-size: 0;
-  animation: 30s slidy infinite;
 }
-
-/*EQUIP PAGE*/
 
 #bigFlex {
   display: flex;
@@ -112,9 +53,6 @@ div#slider figure {
   justify-content: center;
 }
 
-#tripName {
-}
-
 #iconSection {
   display: flex;
   justify-content: center;
@@ -127,8 +65,7 @@ div#slider figure {
 }
 
 .icons {
-    padding: auto;
-    cursor: pointer;
+  padding: auto;
 }
 
 #finalList {
@@ -139,7 +76,6 @@ div#slider figure {
 #loadList {
   display: flex;
   flex-direction: column;
-  list-style: square;
 }
 
 #buttonList {
@@ -152,21 +88,6 @@ div#slider figure {
   display: flex;
   justify-content: center;
   padding: 20px 20px 20px 20px;
-}
-
-#results {
-  font-family: 'Montserrat', sans-serif;
-}
-
-.buttons {
-  border-radius: 15px;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 16px;
-  text-align: center;
-}
-
-#results:hover {
-  cursor: pointer;
 }
 
 #buttonSection {
@@ -190,56 +111,33 @@ div#slider figure {
   padding: 0px 5px 0px 5px;
 }
 
-.sButton > a {
-  text-decoration: none;
-}
-
-/*RESOURCES PAGE*/
-
 .container {
   display: flex;
   justify-content: center;
 }
 
 #resourceInfo {
-  font-family: 'Montserrat', sans-serif;
   display: flex;
-  font-size: 20px;
-  font-weight: bold;
   justify-content: center;
 }
 
-#resourceInstructions {
-
-}
-
 #productResources {
-  /*display: flex;*/
   padding: 10px 20px 10px 20px;
 }
-
-#productResources img {
-}
-
-/*ABOUT PAGE*/
 
 .bioContainer {
   display: flex;
   margin: 10px 0px 10px 0px;
   padding: 0px 10px 10px 10px;
-  background-color: white;
 }
 
 #biographies {
   justify-content: center;
   padding: 0px 10px 10px 10px;
-  background-color: white;
-
 }
 
 #aboutSection {
   flex-direction: column;
-  background-color: white;
   padding: 0px 10px 10px 10px;
 }
 
@@ -247,30 +145,7 @@ div#slider figure {
   display: flex;
   flex-direction: row;
   padding: 0px 10px 40px 10px;
-  width: auto;
-  height: 200px;
-  background-color: white;
   justify-content: center;
-}
-
-#biopic {
-}
-
-#bioborder {
-  border: 1px dashed #C9CCC9;
-  width: 70%;
-  overflow: scroll;
-}
-
-#bioname {
-  padding: 10px 20px 0px 20px;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-}
-
-#biotext {
-  padding: 5px 20px 0px 20px;
-  font-family: 'Montserrat', sans-serif;
 }
 
 #tweetflex {
@@ -278,12 +153,6 @@ div#slider figure {
   justify-content: center;
   flex-direction: row;
   align-content: flex-start;
-}
-
-#tweets {
-  margin-left: auto;
-  margin-right: auto;
-  padding: 20px 20px 20px 20px;
 }
 
 #tweetfeed {
@@ -295,23 +164,90 @@ div#slider figure {
   text-align: center;
 }
 
-/*#finalList {
-  display: flex;
-  justify-content: center;
-}*/
-
-/*FORUM*/
-
 #journal {
   display: flex;
   justify-content: center;
 }
 
-form {
-  display: flex;
-  margin: 20px 20px 20px 20px;
-}
-
 #footer {
   flex-direction: row;
+}
+
+.journalSection {
+  display: flex;
+}
+
+#dropDownSection {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.drop {
+  display: flex;
+  padding: 5px 5px 0px 5px;
+}
+
+#formContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  padding: 10px 10px 10px 10px;
+  align-items: baseline;
+}
+
+#formArticle {
+  display: flex;
+  padding: 10px 10px 10px 10px;
+}
+
+#inputSection {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 10px 10px 10px;
+  overflow: scroll;
+}
+
+#listContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+#dropListName {
+  display: flex;
+  justify-content: center;
+}
+
+#listArticle {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 10px 10px 10px;
+  overflow: scroll;
+}
+
+legend {
+  display: flex;
+}
+
+.formField {
+  display: flex;
+}
+
+#inputSection {
+  display: flex;
+  justify-content: center;
+}
+
+#clearAll {
+  display: flex;
+  justify-content: center;
+  padding: 20px 5px 20px 5px;
+}
+
+#button1 {
+  padding-right: 5px;
+}
+
+#button2 {
+  padding-left: 5px;
 }
