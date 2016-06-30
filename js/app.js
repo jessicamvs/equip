@@ -8,9 +8,7 @@ var $iconHike, $iconMount, $iconSnowboard, $iconSki, $iconCamp, $iconSunny, $ico
 var $active = $('#activities');
 var $weath = $('weather');
 var $dur = $('duration');
-// var active = document.getElementById('activities');
-// var weath = document.getElementById('weather');
-// var dur = document.getElementById('duration');
+
 // ITEMS ARRAY
 var activityItems = [
   ['Hiking Shoes/Boots', '1 Pair of Socks', '1 Pair of Underwear', '1 Shirt/Long­sleeve Shirt', '1 Pair of Shorts/Pants', '30-­40 Liter Backpack', 'Water Bottles', 'Swimsuit (if hiking to a lake)'],
@@ -21,6 +19,7 @@ var activityItems = [
   ['Extra Cool/Ventilating Layers', 'Electrolytes (tablets or liquid)'], ['Rain Jacket', 'Rain Pants', 'Wide-brimmed Hat', 'Dry Bags', 'Pack Cover'], ['Rain Jacket', 'Rain Pants', 'Waterproof Hat', 'Dry Bags', 'Pack Cover'], ['Snow Jacket', 'Snow Pants', 'Snow Gloves/Liners', 'Balaclava', 'Base Layers', 'Insulation Layer'], [],
   ['Sleeping Pad', 'Sleeping Bag', 'Pillow', 'Toiletries', 'Tent/Shelter', 'Stove/Pot', 'Fuel', 'Extra Batteries', 'Water Treatment (filter and/or chemical treatment)', 'Food Storage (bear canister or hanging system)', 'Camp Shoes']
 ];
+
 // var bwArray = [new Equip('Hiking', 'bwHiking.png'), new Equip('Mountaineering', 'bwMountaineering.png'), new Equip('Backcountry Snowboarding', 'bwSnowboard.png'), new Equip('Backcountry Skiing', 'bwSki.png'), new Equip('Car Camping', 'bwCarCamping.png'), new Equip('Sunny', 'bwSunny.png'),
 // new Equip('Rainy', 'bwRainy.png'), new Equip('Cloudy', 'bwCloudy.png'), new Equip('Snowy', 'bwSnow.png'), new Equip('1 Day', 'bwLessThan1.png'), new Equip('2-3 Days', 'bw2-3.png'), new Equip('3+ Days', 'bw3Plus.png')];
 // var colorArray = [new Equip('Hiking', 'hiking.png'), new Equip('Mountaineering', 'mountaineering.png'), new Equip('Backcountry Snowboarding', 'snowboard.png'), new Equip('Backcountry Skiing', 'ski.png'), new Equip('Car Camping', 'carCamping.png'), new Equip('Sunny', 'sunny.png'),
@@ -31,87 +30,48 @@ function Equip(names, src) {
   this.src = 'img/icons/' + src;
   fullArray.push(this);
 };
-// CREATE ACTIVITY ICONS
-// function icons() {
-//   // HIKING
-//   $iconHike = $('#hiking');
-//   hiking.src = bwArray[0].src;
-//   // MOUNTAINEERING
-//   $iconMount = $('#mountaineering');
-//   mountaineering.src = bwArray[1].src;
-//   // SNOWBOARDING
-//   $iconSnowboard = $('#backcountrySnowboarding');
-//   backcountrySnowboarding.src = bwArray[2].src;
-//   // SKIING
-//   $iconSki = $('#backcountrySkiing');
-//   backcountrySkiing.src = bwArray[3].src;
-//   // CAMPING
-//   $iconCamp = $('#carCamping');
-//   carCamping.src = bwArray[4].src;
-//   // SUNNY
-//   $iconSunny = $('#sunny');
-//   sunny.src = bwArray[5].src;
-//   // RAINY
-//   $iconRainy = $('#rainy');
-//   rainy.src = bwArray[6].src;
-//   // CLOUDY
-//   $iconCloudy = $('#cloudy');
-//   cloudy.src = bwArray[7].src;
-//   // SNOWY
-//   $iconSnowy = $('#snowy');
-//   snowy.src = bwArray[8].src;
-//   // ONE DAY
-//   $iconOne = $('#lessThanOne');
-//   lessThanOne.src = bwArray[9].src;
-//   // TWO - THREE DAYS
-//   $iconTwo = $('#twoThree');
-//   twoThree.src = bwArray[10].src;
-//   // THREE PLUS DAYS
-//   $iconThree = $('#threePlus');
-//   threePlus.src = bwArray[11].src;
-// };
-// icons();
+
 // ACTIVITY EVENT LISTENERS
-$($iconHike).on('click', function() {
-  handleIcon(activityItems[0]);
-  hiking.src = colorArray[0].src;
-  mountaineering.src = bwArray[1].src;
-  backcountrySnowboarding.src = bwArray[2].src;
-  backcountrySkiing.src = bwArray[3].src;
-  carCamping.src = bwArray[4].src;
-});
-$($iconMount).on('click', function() {
-  handleIcon(activityItems[1]);
-  hiking.src = bwArray[0].src;
-  mountaineering.src = colorArray[1].src;
-  backcountrySnowboarding.src = bwArray[2].src;
-  backcountrySkiing.src = bwArray[3].src;
-  carCamping.src = bwArray[4].src;
-});
-$($iconSnowboard).on('click', function() {
-  handleIcon(activityItems[2]);
-  hiking.src = bwArray[0].src;
-  mountaineering.src = bwArray[1].src;
-  backcountrySnowboarding.src = colorArray[2].src;
-  backcountrySkiing.src = bwArray[3].src;
-  carCamping.src = bwArray[4].src;
-});
-$($iconSki).on('click', function() {
-  handleIcon(activityItems[3]);
-  hiking.src = bwArray[0].src;
-  mountaineering.src = bwArray[1].src;
-  backcountrySnowboarding.src = bwArray[2].src;
-  backcountrySkiing.src = colorArray[3].src;
-  carCamping.src = bwArray[4].src;
-});
-$($iconCamp).on('click', function() {
-  handleIcon(activityItems[4]);
-  hiking.src = bwArray[0].src;
-  mountaineering.src = bwArray[1].src;
-  backcountrySnowboarding.src = bwArray[2].src;
-  backcountrySkiing.src = bwArray[3].src;
-  carCamping.src = colorArray[4].src;
-});
+// $($iconHike).on('click', function() {
+//   handleIcon(activityItems[0]);
+//   hiking.src = colorArray[0].src;
+//   mountaineering.src = bwArray[1].src;
+//   backcountrySnowboarding.src = bwArray[2].src;
+//   backcountrySkiing.src = bwArray[3].src;
+//   carCamping.src = bwArray[4].src;
+// });
+// $($iconMount).on('click', function() {
+//   handleIcon(activityItems[1]);
+//   hiking.src = bwArray[0].src;
+//   mountaineering.src = colorArray[1].src;
+//   backcountrySnowboarding.src = bwArray[2].src;
+//   backcountrySkiing.src = bwArray[3].src;
+//   carCamping.src = bwArray[4].src;
+// });
+// $($iconSnowboard).on('click', function() {
+//   handleIcon(activityItems[2]);
+//   hiking.src = bwArray[0].src;
+//   mountaineering.src = bwArray[1].src;
+//   backcountrySnowboarding.src = colorArray[2].src;
+//   backcountrySkiing.src = bwArray[3].src;
+//   carCamping.src = bwArray[4].src;
+// });
+// $($iconSki).on('click', function() {
+//   handleIcon(activityItems[3]);
+//   hiking.src = bwArray[0].src;
+//   mountaineering.src = bwArray[1].src;
+//   backcountrySnowboarding.src = bwArray[2].src;
+//   backcountrySkiing.src = colorArray[3].src;
+//   carCamping.src = bwArray[4].src;
+// });
+// $($iconCamp).on('click', function() {
+//   handleIcon(activityItems[4]);
+//   hiking.src = bwArray[0].src;
+//   mountaineering.src = bwArray[1].src;
+//   backcountrySnowboarding.src = bwArray[2].src;
+//   backcountrySkiing.src = bwArray[3].src;
+//   carCamping.src = colorArray[4].src;
+// });
 // ACTIVITY EVENT HANDLER
 // function handleIcon(icon) {
 //   var $finalList = $('#finalList');
@@ -123,34 +83,34 @@ $($iconCamp).on('click', function() {
   // console.log(essentials);
 // };
 // WEATHER EVENT LISTENERS
-iconSunny.addEventListener('click', function() {
-  handleIcon2(activityItems[5]);
-  sunny.src = colorArray[5].src;
-  rainy.src = bwArray[6].src;
-  cloudy.src = bwArray[7].src;
-  snowy.src = bwArray[8].src;
-});
-iconRainy.addEventListener('click', function() {
-  handleIcon2(activityItems[6]);
-  sunny.src = bwArray[5].src;
-  rainy.src = colorArray[6].src;
-  cloudy.src = bwArray[7].src;
-  snowy.src = bwArray[8].src;
-});
-iconCloudy.addEventListener('click', function() {
-  handleIcon2(activityItems[7]);
-  sunny.src = bwArray[5].src;
-  rainy.src = bwArray[6].src;
-  cloudy.src = colorArray[7].src;
-  snowy.src = bwArray[8].src;
-});
-iconSnowy.addEventListener('click', function() {
-  handleIcon2(activityItems[8]);
-  sunny.src = bwArray[5].src;
-  rainy.src = bwArray[6].src;
-  cloudy.src = bwArray[7].src;
-  snowy.src = colorArray[8].src;
-});
+// iconSunny.addEventListener('click', function() {
+//   handleIcon2(activityItems[5]);
+//   sunny.src = colorArray[5].src;
+//   rainy.src = bwArray[6].src;
+//   cloudy.src = bwArray[7].src;
+//   snowy.src = bwArray[8].src;
+// });
+// iconRainy.addEventListener('click', function() {
+//   handleIcon2(activityItems[6]);
+//   sunny.src = bwArray[5].src;
+//   rainy.src = colorArray[6].src;
+//   cloudy.src = bwArray[7].src;
+//   snowy.src = bwArray[8].src;
+// });
+// iconCloudy.addEventListener('click', function() {
+//   handleIcon2(activityItems[7]);
+//   sunny.src = bwArray[5].src;
+//   rainy.src = bwArray[6].src;
+//   cloudy.src = colorArray[7].src;
+//   snowy.src = bwArray[8].src;
+// });
+// iconSnowy.addEventListener('click', function() {
+//   handleIcon2(activityItems[8]);
+//   sunny.src = bwArray[5].src;
+//   rainy.src = bwArray[6].src;
+//   cloudy.src = bwArray[7].src;
+//   snowy.src = colorArray[8].src;
+// });
 // WEATHER EVENT HANDLER
 // function handleIcon2(icon) {
 //   var finalList = document.getElementById('finalList');
@@ -160,24 +120,24 @@ iconSnowy.addEventListener('click', function() {
 //   }
 // };
 // DURATION EVENT LISTENERS
-iconOne.addEventListener('click', function() {
-  handleIcon3(activityItems[9]);
-  lessThanOne.src = colorArray[9].src;
-  twoThree.src = bwArray[10].src;
-  threePlus.src = bwArray[11].src;
-});
-iconTwo.addEventListener('click', function() {
-  handleIcon3(activityItems[10]);
-  lessThanOne.src = bwArray[9].src;
-  twoThree.src = colorArray[10].src;
-  threePlus.src = bwArray[11].src;
-});
-iconThree.addEventListener('click', function() {
-  handleIcon3(activityItems[10]);
-  lessThanOne.src = bwArray[9].src;
-  twoThree.src = bwArray[10].src;
-  threePlus.src = colorArray[11].src;
-});
+// iconOne.addEventListener('click', function() {
+//   handleIcon3(activityItems[9]);
+//   lessThanOne.src = colorArray[9].src;
+//   twoThree.src = bwArray[10].src;
+//   threePlus.src = bwArray[11].src;
+// });
+// iconTwo.addEventListener('click', function() {
+//   handleIcon3(activityItems[10]);
+//   lessThanOne.src = bwArray[9].src;
+//   twoThree.src = colorArray[10].src;
+//   threePlus.src = bwArray[11].src;
+// });
+// iconThree.addEventListener('click', function() {
+//   handleIcon3(activityItems[10]);
+//   lessThanOne.src = bwArray[9].src;
+//   twoThree.src = bwArray[10].src;
+//   threePlus.src = colorArray[11].src;
+// });
 // DURATION EVENT HANDLER
 // var finalArray;
 // function handleIcon3(icon) {
@@ -195,13 +155,13 @@ iconThree.addEventListener('click', function() {
 // };
 
 listDisplay.handleMainDisplay = function() {
-  $('#buttonList').on('click', '.tab', function(e) {
-    $('.tab-content').hide();
-    console.log(this);
-    $('#' + $(this).attr('content')).fadeIn();
+  $('#buttonList').on('click', '.buttons', function(e) {
+    e.preventDefault();
+    $('#iconSection').hide();
+    $('#finalList').show();
+    $('#buttonSection').show();
   });
 
-  $('#buttonList .tab:first').click();
 };
 
 listDisplay.handleMainDisplay();
@@ -209,7 +169,7 @@ listDisplay.handleMainDisplay();
 
 
 // ADD LS
-var listEl = document.getElementById('tripName');
+var $listEl = $('#tripName');
 //var chartData = localStorage.getItem();
 function getLocalStorage() {
   if (chartData) {
@@ -220,34 +180,7 @@ function getLocalStorage() {
     localStorage.setItem(listName, JSON.stringify(finalArray));
   }
 };
-// EQUIP ME BUTTON
-var listName;
-results.addEventListener('click', handleButton);
-function handleButton(e) {
-  if (!listEl.value) {
-    return;
-  } else {
-    e.preventDefault();
-    var finalList = document.getElementById('finalList');
-    var loadList = document.getElementById('loadList');
-    listName = listEl.value;
-    var nameEl = document.getElementById('nameEl');
-    for (var j = 0; j < finalArray.length; j++) {
-      nameEl.textContent = listName;
-      var listArray = document.createElement('li');
-      listArray.textContent = finalArray[j];
-      loadList.appendChild(listArray);
-    }
-    finalList.appendChild(loadList);
-  }
-  tripName.style.display = 'none';
-  active.style.display = 'none';
-  weath.style.display = 'none';
-  dur.style.display = 'none';
-  results.style.display = 'none';
-  saveButton.style.display = 'block';
-  clearList.style.display = 'block';
-};
+
 function Trip(tripName, tripList, objDes, objDetails, objWish) {
  this.names = tripName;
  this.lists = tripList;
@@ -265,8 +198,7 @@ function checkLS() {
 checkLS();
 // SAVE BUTTON
 var totalTrips = [];
-saveButton.addEventListener('click', handleSave);
-function handleSave(e) {
+$('#saveButton').on('click', function handleSave(e) {
   if (localStorage.totalTrips) {
     var z = localStorage.getItem('totalTrips');
     var a = JSON.parse(z);
@@ -278,10 +210,14 @@ function handleSave(e) {
 
   var b = JSON.stringify(totalTrips);
   localStorage.setItem('totalTrips', b);
-};
+});
 // CLEAR LIST BUTTON
-clearList.addEventListener('click', handleClearList);
-function handleClearList() {
+$('#clearList').on('click', function handleClearList() {
   // lsClear.style.display = 'block';
   location.reload(false);
-};
+});
+
+$(function(){
+  $('#finalList').hide();
+  $('#buttonSection').hide();
+});
