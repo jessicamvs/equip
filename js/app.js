@@ -3,8 +3,8 @@ var listDisplay = {};
 
 // FINAL ARRAY
 var fullArray = [];
-// DECLARING VARIABLES
 var essentials = [];
+// DECLARING VARIABLES
 var $active = $('#activities');
 var $weath = $('weather');
 var $dur = $('duration');
@@ -24,13 +24,6 @@ var activityItems = [
   ['Sleeping Pad', 'Sleeping Bag', 'Pillow', 'Toiletries', 'Tent/Shelter', 'Stove/Pot', 'Fuel', 'Extra Batteries', 'Water Treatment (filter and/or chemical treatment)', 'Food Storage (bear canister or hanging system)', 'Camp Shoes']
 ];
 
-// ACTIVITY CONSTRUCTOR
-// function Equip(names, src) {
-//   this.names = names;
-//   this.src = 'img/icons/' + src;
-//   fullArray.push(this);
-// };
-
 // ACTIVITY EVENT LISTENERS
 var yeah;
 var yeah2;
@@ -49,99 +42,22 @@ $('#iconSection').on('click', 'img', function() {
       this.src = this.src.split('icons/')[0] + 'icons/bw' + this.src.split('icons/')[1];
     }
   });
-
-
-
 });
-
-$($iconHike).on('click', function() {
-  handleIcon(activityItems[0]);
-});
-$($iconMount).on('click', function() {
-  handleIcon(activityItems[1]);
-});
-$($iconSnowboard).on('click', function() {
-  handleIcon(activityItems[2]);
-});
-$($iconSki).on('click', function() {
-  handleIcon(activityItems[3]);
-});
-$($iconCamp).on('click', function() {
-  handleIcon(activityItems[4]);
-});
-// ACTIVITY EVENT HANDLER
-
-// function handleIcon(icon) {
-//   var $finalList = $('#finalList');
-//   // finalList.style.display = 'none';
-//   for (var i = 0; i < icon.length; i++) {
-//     essentials.push(icon[i]);
-//   }
-// };
-
-// WEATHER EVENT LISTENERS
-$iconSunny.addEventListener('click', function() {
-  handleIcon2(activityItems[5]);
-});
-iconRainy.addEventListener('click', function() {
-  handleIcon2(activityItems[6]);
-});
-iconCloudy.addEventListener('click', function() {
-  handleIcon2(activityItems[7]);
-});
-iconSnowy.addEventListener('click', function() {
-  handleIcon2(activityItems[8]);
-});
-// WEATHER EVENT HANDLER
-// function handleIcon2(icon) {
-//   var finalList = document.getElementById('finalList');
-//   // finalList.style.display = 'none';
-//   for (var i = 0; i < icon.length; i++) {
-//     essentials.push(icon[i]);
-//   }
-// };
-// DURATION EVENT LISTENERS
-iconOne.addEventListener('click', function() {
-  handleIcon3(activityItems[9]);
-});
-iconTwo.addEventListener('click', function() {
-  handleIcon3(activityItems[10]);
-});
-iconThree.addEventListener('click', function() {
-  handleIcon3(activityItems[10]);
-});
-// DURATION EVENT HANDLER
-// var finalArray;
-// function handleIcon3(icon) {
-//   var finalList = document.getElementById('finalList');
-//   // finalList.style.display = 'none';
-//   for (var i = 0; i < icon.length; i++) {
-//     essentials.push(icon[i]);
-//   }
-//   finalArray = [];
-//   essentials.forEach(function(e) {
-//     if (finalArray.indexOf(e) === -1) {
-//       finalArray.push(e);
-//     }
-//   })
-// };
 
 listDisplay.handleMainDisplay = function() {
-  $('#buttonList').on('click', '.tab', function(e) {
-    $('.tab-content').hide();
-    console.log(this);
-    $('#' + $(this).attr('content')).fadeIn();
+  $('#buttonList').on('click', '.buttons', function(e) {
+    e.preventDefault();
+    $('#iconSection').hide();
+    $('#finalList').show();
+    $('#buttonSection').show();
   });
 
-  $('#buttonList .tab:first').click();
 };
 
 listDisplay.handleMainDisplay();
 
-
-
 // ADD LS
-var listEl = document.getElementById('tripName');
+var $listEl = $('#tripName');
 //var chartData = localStorage.getItem();
 function getLocalStorage() {
   if (chartData) {
@@ -152,34 +68,7 @@ function getLocalStorage() {
     localStorage.setItem(listName, JSON.stringify(finalArray));
   }
 };
-// EQUIP ME BUTTON
-var listName;
-results.addEventListener('click', handleButton);
-function handleButton(e) {
-  if (!listEl.value) {
-    return;
-  } else {
-    e.preventDefault();
-    var finalList = document.getElementById('finalList');
-    var loadList = document.getElementById('loadList');
-    listName = listEl.value;
-    var nameEl = document.getElementById('nameEl');
-    for (var j = 0; j < finalArray.length; j++) {
-      nameEl.textContent = listName;
-      var listArray = document.createElement('li');
-      listArray.textContent = finalArray[j];
-      loadList.appendChild(listArray);
-    }
-    finalList.appendChild(loadList);
-  }
-  tripName.style.display = 'none';
-  $active.style.display = 'none';
-  $weath.style.display = 'none';
-  $dur.style.display = 'none';
-  results.style.display = 'none';
-  saveButton.style.display = 'block';
-  clearList.style.display = 'block';
-};
+
 function Trip(tripName, tripList, objDes, objDetails, objWish) {
  this.names = tripName;
  this.lists = tripList;
@@ -195,10 +84,10 @@ function checkLS() {
   }
 };
 checkLS();
+
 // SAVE BUTTON
 var totalTrips = [];
-saveButton.addEventListener('click', handleSave);
-function handleSave(e) {
+$('#saveButton').on('click', function handleSave(e) {
   if (localStorage.totalTrips) {
     var z = localStorage.getItem('totalTrips');
     var a = JSON.parse(z);
@@ -210,10 +99,15 @@ function handleSave(e) {
 
   var b = JSON.stringify(totalTrips);
   localStorage.setItem('totalTrips', b);
-};
+});
+
 // CLEAR LIST BUTTON
-clearList.addEventListener('click', handleClearList);
-function handleClearList() {
+$('#clearList').on('click', function handleClearList() {
   // lsClear.style.display = 'block';
   location.reload(false);
-};
+});
+
+$(function(){
+  $('#finalList').hide();
+  $('#buttonSection').hide();
+});
