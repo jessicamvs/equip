@@ -4,7 +4,7 @@ var tripsArray = [];
 var trip = null;
 var where, details, wish;
 
-function selectionValue() {             // Placeholder function to get the selected object
+function selectionValue() {
   tripsArray.forEach(function(trips) {
     if($('#dropDown').val() === trips.names) {
       trip = trips;
@@ -57,44 +57,14 @@ function newLS() {
 };
 // PRINT FORM CONTENT
 function makePastLists() {
-  // event.preventDefault();
-  // var $dropValue = $('#dropdown').val(); //Refer back to selection method?
-  // var $inputSection = $('#inputSection');
   var $journalEntries = $('#journalEntries');
-  // console.log($journalEntries);
   $('#inputSection').children().remove();
-  // (journalEntries);
-  // var journalEntries = document.createElement('div');
-  // $journalEntries.attr('id', 'journalEntries');
-  // var $journalEntries = $('<div id="journalEntries></div>"');
   $journalEntries.append('<h5>Destination: </h5>');
   $journalEntries.append('<p>' + trip.destination + '</p>');
   $journalEntries.append('<h5>Trip Details: </h5>');
   $journalEntries.append('<p>' + trip.details + '</p>');
   $journalEntries.append('<h5>Wish I\'d Brought: </h5>');
   $journalEntries.append('<p>' + trip.wish + '</p>');
-  // var destination = document.createElement('h5');
-  // destination.textContent = 'Destination:';
-  // $journalEntries.append(destination);
-  // var inputDestination = document.createElement('p');
-  // inputDestination.textContent = tripsArray[$dropValue].destination;
-  // $journalEntries.append(inputDestination);
-
-  // var tripDetails = document.createElement('h5');
-  // tripDetails.textContent = 'Trip Details:';
-  // $journalEntries.append(tripDetails);
-
-  // var inputTripDetails = document.createElement('p');
-  // inputTripDetails.textContent = tripsArray[$dropValue].details;
-  // $journalEntries.append(inputTripDetails);
-
-  // var wishIdBrought = document.createElement('h5');
-  // wishIdBrought.textContent = 'Wish I\'d Brought:';
-  // $journalEntries.append(wishIdBrought);
-
-  // var inputWish = document.createElement('p');
-  // inputWish.textContent = tripsArray[$dropValue].wish;
-  // $journalEntries.append(inputWish);
   $('#inputSection').append($journalEntries);
 
 };
@@ -104,9 +74,9 @@ function clearForm() {
   where = null;
   details = null;
   wish = null;
-};
+}
+
 function dropDownInfo() {
-  // var $dropValue = $('#dropdown').val();
   var journalEntries = document.getElementById('journalEntries');
   if (trip.destination.length === 0 && trip.details.length === 0 && trip.wish.length === 0) {
     $inputForm.attr('hidden', false);
@@ -116,20 +86,18 @@ function dropDownInfo() {
     makePastLists();
     $inputForm.attr('hidden', true);
   }
-};
+}
 
 // DROPDOWN SUBMIT BUTTON
 submit.addEventListener('click', handleSubmitClick);
 function handleSubmitClick(e) {
   e.preventDefault();
-  selectionValue();                                   // Call for Placeholder selection function
+  selectionValue();
   createDropList();
   dropDownInfo();
 };
 
 // SAVE LISTS BUTTON
-// var $pastListButton = $('#pastListButton');
-// var formArticle = document.getElementById('formArticle');
 $('#pastListButton').on('click', function(e) {
   e.preventDefault();
   console.log('THIS IS SAVED TO LOCAL STORAGE');
@@ -139,13 +107,11 @@ $('#pastListButton').on('click', function(e) {
 });
 
 // CLEAR ALL BUTTONS
-deleted.addEventListener('click', handleDeleteClick);
-function handleDeleteClick() {
-  console.log('deleting local storage!');
-  alert('Press "OK" to delete ALL you past list entries.');
+$('#deleted').on('click', function() {
+  alert('Press "OK" to delete ALL of your past list entries');
   location.reload(false);
   localStorage.clear();
-};
+});
 
 $(document).ready(function() {
   checkLS();
