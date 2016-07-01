@@ -59,23 +59,93 @@ listDisplay.handleMainDisplay();
 
 // ADD LS
 var $listEl = $('#tripName');
-//var chartData = localStorage.getItem();
+var finalArray = [];
 function getLocalStorage() {
+  var chartData = localStorage.getItem('listName');
   if (chartData) {
-    finalArray = [];
     finalArray = JSON.parse(chartData);
   } else {
     console.log('Local storage empty!! Initializing!');
-    localStorage.setItem(listName, JSON.stringify(finalArray));
+    localStorage.setItem('listName', JSON.stringify(finalArray));
   }
 };
+getLocalStorage();
+
+// EQUIP ME BUTTON
+var listName = null;
+ // -var listName;
+
+ $('#results').on('click', function(e) {
+   if(!$('#tripName').val()) {
+     return;
+   } else {
+     e.preventDefault();
+     listName = $('#tripName').val();
+     var nameEl = $('#nameEl');
+     finalArray.forEach(function(ele) {
+       nameEl.text(listName);
+       $('li').text(ele).append($('#loadList')).append($('#finalList'));
+     });
+   }
+  //  -  if (!$listEl.value) {
+  //  -    return;
+  //  -  } else {
+  //  -    e.preventDefault();
+  //  -    var finalList = document.getElementById('finalList');
+  //  -    var loadList = document.getElementById('loadList');
+  //  -    listName = $listEl.value;
+  //  -    var nameEl = document.getElementById('nameEl');
+  //  -    for (var j = 0; j < finalArray.length; j++) {
+  //  -      nameEl.textContent = listName;
+  //  -      var listArray = document.createElement('li');
+  //  -      listArray.textContent = finalArray[j];
+  //  -      loadList.appendChild(listArray);
+  //  -    }
+  //  -    finalList.appendChild(loadList);
+  //  -  }
+  //  -  tripName.style.display = 'none';
+  //  -  active.style.display = 'none';
+  //  -  weath.style.display = 'none';
+  //  -  dur.style.display = 'none';
+  //  -  results.style.display = 'none';
+  //  -  saveButton.style.display = 'block';
+  //  -  clearList.style.display = 'block';
+   //
+ });
+
+ // -results.addEventListener('click', handleButton);
+ // -function handleButton(e) {
+ // -  if (!listEl.value) {
+ // -    return;
+ // -  } else {
+ // -    e.preventDefault();
+ // -    var finalList = document.getElementById('finalList');
+ // -    var loadList = document.getElementById('loadList');
+ // -    listName = listEl.value;
+ // -    var nameEl = document.getElementById('nameEl');
+ // -    for (var j = 0; j < finalArray.length; j++) {
+ // -      nameEl.textContent = listName;
+ // -      var listArray = document.createElement('li');
+ // -      listArray.textContent = finalArray[j];
+ // -      loadList.appendChild(listArray);
+ // -    }
+ // -    finalList.appendChild(loadList);
+ // -  }
+ // -  tripName.style.display = 'none';
+ // -  active.style.display = 'none';
+ // -  weath.style.display = 'none';
+ // -  dur.style.display = 'none';
+ // -  results.style.display = 'none';
+ // -  saveButton.style.display = 'block';
+ // -  clearList.style.display = 'block';
+ // -};
 
 function Trip(tripName, tripList, objDes, objDetails, objWish) {
- this.names = tripName;
- this.lists = tripList;
- this.destination = '';
- this.details = '';
- this.wish = '';
+  this.names = tripName;
+  this.lists = tripList;
+  this.destination = '';
+  this.details = '';
+  this.wish = '';
 };
 function checkLS() {
   if (localStorage.totalTrips) {
@@ -89,6 +159,7 @@ checkLS();
 // SAVE BUTTON
 var totalTrips = [];
 $('#saveButton').on('click', function handleSave(e) {
+  e.preventDefault();
   if (localStorage.totalTrips) {
     var z = localStorage.getItem('totalTrips');
     var a = JSON.parse(z);

@@ -34,6 +34,7 @@ function createDropList() {
     alert('Head to the EQUIP tab to get a list started');
   } else {
     tripsArray.forEach(function(trips) {
+      console.log(trips);
       if (trips.names === $dropValue) {
         trips.lists.forEach(function(item) {
           $('#listContainer').append('<li>' + item + '</li>');
