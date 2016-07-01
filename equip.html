@@ -23,32 +23,37 @@
     </nav>
 
     <form id="bigFlex" action="equip.html" method="post">
-    <section id="equipContent">
+
+      <!-- icons and list name -->
+    <section id="equipContent" class="tab-content">
       <section id="tripNames">
         <input id="tripName" placeholder="Name Your List" type="text" id="n1" name="tripLogName" required="required" >
       </section>
+
     <section id="iconSection">
       <article id="activities">
-        <img class="icons" id="hiking" title="Hiking"/>
-        <img class="icons" id="mountaineering" title="Mountaineering"/>
-        <img class="icons" id="backcountrySnowboarding" title="Backcountry Snowboarding"/>
-        <img class="icons" id="backcountrySkiing" title="Backcountry Skiing"/>
-        <img class="icons" id="carCamping" title="Car Camping"/>
+        <img src="img/icons/bwHiking.png" class="icons" data-activityItems="0" id="hiking" title="Hiking"/>
+        <img src="img/icons/bwMountaineering.png" class="icons" data-activityItems="1" id="mountaineering" title="Mountaineering"/>
+        <img src="img/icons/bwSnowboard.png" class="icons" data-activityItems="2" id="backcountrySnowboarding" title="Backcountry Snowboarding"/>
+        <img src="img/icons/bwSki.png" class="icons" data-activityItems="3" id="backcountrySkiing" title="Backcountry Skiing"/>
+        <img src="img/icons/bwCarCamping.png"class="icons" data-activityItems="4" id="carCamping" title="Car Camping"/>
       </article>
 
       <article id="weather">
-        <img class="icons" id="sunny" title="Sunny"/>
-        <img class="icons" id="rainy"/ title="Rainy">
-        <img class="icons" id="cloudy" title="Cloudy"/>
-        <img class="icons" id="snowy"/ title="Snowy">
+        <img src="img/icons/bwSunny.png" class="icons" data-activityItems="5" id="sunny" title="Sunny"/>
+        <img src="img/icons/bwRainy.png" class="icons" data-activityItems="6" id="rainy"/ title="Rainy">
+        <img src="img/icons/bwCloudy.png" class="icons" data-activityItems="7" id="cloudy" title="Cloudy"/>
+        <img src="img/icons/bwSnow.png" class="icons" data-activityItems="8" id="snowy"/ title="Snowy">
       </article>
 
       <article id="duration">
-        <img class="icons" id="lessThanOne" title="Day Trip"/>
-        <img class="icons" id="twoThree" title="1-2 Nights"/>
-        <img class="icons" id="threePlus" title="3+ Nights"/>
+        <img src="img/icons/bwLessThan1.png" class="icons" data-activityItems="9" id="lessThanOne" title="Day Trip"/>
+        <img src="img/icons/bw2-3.png" class="icons" data-activityItems="10" id="twoThree" title="1-2 Nights"/>
+        <img src="img/icons/bw3Plus.png" class="icons" data-activityItems="10" id="threePlus" title="3+ Nights"/>
       </article>
     </section>
+
+    <!-- equip button -->
       <section id="buttonList">
         <article>
           <h3 id="nameEl"></h3>
@@ -60,20 +65,36 @@
       </section>
     </section>
 
-      <section id="finalList">
+<!-- equipment list -->
+      <section id="finalList" class="tab-content">
+        <div id="equipmentList">
+          <ul>
+            <li>Knife or Multitool</li>
+            <li>Firestarter and Matches</li>
+            <li>Map</li>
+            <li>Compass</li>
+            <li>First Aid Kit</li>
+            <li>Flashlight</li>
+            <li>Sun Protection (hat, sunglasses, sunscreen)</li>
+            <li>Whistle</li>
+            <li>Extra Clothing (hat, gloves, socks, underwear)</li>
+            <li>Extra Food (Energy Bar or Gel)</li>
+          </ul>
+        </div>
         <ul type="checkbox" id="loadList"></ul>
       </section>
     </form>
 
     <section id="buttonSection">
       <article class="cButton">
-        <button hidden class="buttons" id="clearList">RESET</button>
+        <button  class="buttons" id="clearList">RESET</button>
       </article>
       <article class="sButton">
-        <a href="resources.html"><button hidden class="buttons" id="saveButton" type="button">SAVE LIST</button></a>
+        <a href="resources.html"><button class="buttons" id="saveButton" type="button">SAVE LIST</button></a>
       </article>
     </section>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
     <!-- <footer id="footer">Equip Education &copy; Copyright, 2016</footer> -->
   </body>
