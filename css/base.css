@@ -1,0 +1,47 @@
+body {
+  margin: 0;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0px 0px 0px;
+  margin: -15px;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  background-color: none;
+  padding: 0px 10px 20px 10px;
+  margin: 10px 10px -35px 10px;
+}
+
+nav ul {
+  display: flex;
+  align-self: center;
+  font-family: 'Montserrat', sans-serif;
+  background-color: none;
+}
+
+nav ul li {
+  display: flex;
+  list-style: none;
+  background-color: none;
+  margin: 10px 0px 10px 0px;
+  padding: 0px 10px 0px 10px;
+}
+
+nav ul li a {
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+  color: black;
+  background-color: none;
+}
+
+form {
+  display: flex;
+  margin: 20px 20px 20px 20px;
+}

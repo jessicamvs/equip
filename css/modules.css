@@ -1,0 +1,145 @@
+#headerLogo {
+  display: flex;
+  align-self: center;
+}
+
+div#slider figure {
+  text-align: left;
+  font-size: 0;
+  animation: 30s slidy infinite;
+}
+
+/*EQUIP PAGE*/
+.icons {
+  cursor: pointer;
+}
+
+#loadList {
+  list-style: square;
+}
+
+#results {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.buttons {
+  border-radius: 15px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  text-align: center;
+}
+
+#results:hover {
+  cursor: pointer;
+}
+
+.sButton > a {
+  text-decoration: none;
+}
+
+/*RESOURCES PAGE*/
+
+#resourceInfo {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/*ABOUT PAGE*/
+
+.bioContainer {
+  background-color: white;
+}
+
+#biographies {
+  background-color: white;
+}
+
+#aboutSection {
+  background-color: white;
+}
+
+#bios {
+  width: auto;
+  height: 200px;
+  background-color: white;
+}
+
+#bioborder {
+  border: 1px dashed #C9CCC9;
+  width: 70%;
+  overflow: scroll;
+}
+
+#bioname {
+  padding: 10px 20px 0px 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
+
+#biotext {
+  padding: 5px 20px 0px 20px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+#tweets {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px 20px 20px 20px;
+}
+
+#dropdown {
+  width: 150px;
+}
+
+#formContainer {
+  background-color: none;
+  margin-bottom: 12px;
+  max-height: 500px;
+}
+
+#inputSection {
+  max-height: 500px;
+}
+
+#listArticle {
+  max-height: 500px;
+}
+
+#legend {
+  text-align: center;
+}
+
+#past-lists {
+  font-family: 'Montserrat', sans-serif;
+}
+
+legend {
+  font-size: 18px;
+  margin-bottom: 7px;
+  background-color: none;
+}
+
+.formLabel {
+  width: 300px;
+  margin-top: 8px;
+  margin-bottom: 5px;
+  background-color: none;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.formField {
+  width: 460px;
+  background-color: none;
+  margin-bottom: 18px;
+}
+
+label {
+  font-family: 'Montserrat', sans-serif;
+}
+
+#journalEntries {
+  list-style: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+}
