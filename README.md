@@ -1,3 +1,13 @@
+301 Refactor by Jessica, Geoffrey and Jonathan
+
++ Swapped vanilla JS for jQuery
++ Implemented SMACCSS
++ Reduced number of click events using delegation
++ Fixed forum.js (wasn't working before)
+
+
+
+
 Day 3 (wednesday, Jan. 24, 2016): Both JS pages working. Still refining both pages. Added resources tab with links below to products.
 
 Links for resources pages:
