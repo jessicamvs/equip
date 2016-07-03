@@ -47,10 +47,12 @@ $('#iconSection').on('click', 'img', function() {
 
 listDisplay.handleMainDisplay = function() {
   $('#buttonList').on('click', '.buttons', function(e) {
-    e.preventDefault();
-    $('#iconSection').hide();
-    $('#finalList').show();
-    $('#buttonSection').show();
+    if($('#tripName').val()) {
+      e.preventDefault();
+      $('#iconSection').hide();
+      $('#finalList').show();
+      $('#buttonSection').show();
+    }
   });
 
 };
@@ -79,7 +81,7 @@ var listName = null;
    if(!$('#tripName').val()) {
      return;
    } else {
-     e.preventDefault();
+    //  e.preventDefault();
      listName = $('#tripName').val();
      var nameEl = $('#nameEl');
      finalArray.forEach(function(ele) {
@@ -87,30 +89,6 @@ var listName = null;
        $('li').text(ele).append($('#loadList')).append($('#finalList'));
      });
    }
-  //  -  if (!$listEl.value) {
-  //  -    return;
-  //  -  } else {
-  //  -    e.preventDefault();
-  //  -    var finalList = document.getElementById('finalList');
-  //  -    var loadList = document.getElementById('loadList');
-  //  -    listName = $listEl.value;
-  //  -    var nameEl = document.getElementById('nameEl');
-  //  -    for (var j = 0; j < finalArray.length; j++) {
-  //  -      nameEl.textContent = listName;
-  //  -      var listArray = document.createElement('li');
-  //  -      listArray.textContent = finalArray[j];
-  //  -      loadList.appendChild(listArray);
-  //  -    }
-  //  -    finalList.appendChild(loadList);
-  //  -  }
-  //  -  tripName.style.display = 'none';
-  //  -  active.style.display = 'none';
-  //  -  weath.style.display = 'none';
-  //  -  dur.style.display = 'none';
-  //  -  results.style.display = 'none';
-  //  -  saveButton.style.display = 'block';
-  //  -  clearList.style.display = 'block';
-   //
  });
 
  // -results.addEventListener('click', handleButton);
@@ -147,6 +125,7 @@ function Trip(tripName, tripList, objDes, objDetails, objWish) {
   this.details = '';
   this.wish = '';
 };
+
 function checkLS() {
   if (localStorage.totalTrips) {
     var z = localStorage.getItem('totalTrips');
